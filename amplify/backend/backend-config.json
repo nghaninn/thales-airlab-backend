@@ -13,5 +13,12 @@
         }
       }
     }
+  },
+  "function": {
+    "thalesApi": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
   }
 }

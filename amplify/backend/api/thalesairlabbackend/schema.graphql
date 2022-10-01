@@ -1,22 +1,37 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Blog @model {
-  id: ID!
-  name: String!
-  posts: [Post] @hasMany
+type Airport @model {
+  uid: String! @primaryKey
+  name: String
+  icao: String
+  lat: Float
+  lng: Float
+  alt: Int
+  SIDs: [SID] @hasMany
+  STARs: [STAR] @hasMany
 }
 
-type Post @model {
-  id: ID!
-  title: String!
-  blog: Blog @belongsTo
-  comments: [Comment] @hasMany
+type Waypoint @model {
+  uid: String! @primaryKey
+  name: String
+  lat: Float
+  lng: Float
+  SIDs: [SID] @manyToMany(relationName: "SIDWaypoint")
+  STARs: [STAR] @manyToMany(relationName: "STARWaypoint")
 }
 
-type Comment @model {
-  id: ID!
-  post: Post @belongsTo
-  content: String!
+type SID @model {
+  name: String! @primaryKey
+  airportUID: String
+  airport: Airport @belongsTo(fields: ["airportUID"])
+  waypoints: [Waypoint] @manyToMany(relationName: "SIDWaypoint")
+}
+
+type STAR @model {
+  name: String! @primaryKey
+  airportUID: String
+  airport: Airport @belongsTo(fields: ["airportUID"])
+  waypoints: [Waypoint] @manyToMany(relationName: "STARWaypoint")
 }

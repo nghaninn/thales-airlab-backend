@@ -14,4 +14,5 @@
       - Get SID by ICAO => https://open-atms.airlab.aero/api/v1/airac/sids/airport/{icao}
       - Get Star by ICAO => https://open-atms.airlab.aero/api/v1/airac/stars/airport/{icao}
 2. List all Airport
-3. 
+3. List Top2 waypoints
+4. 

@@ -10,6 +10,15 @@
       "StackName": "amplify-thalesairlabbackend-dev-22521",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:994499184724:stack/amplify-thalesairlabbackend-dev-22521/69313800-41b6-11ed-9b77-06508e0c826e",
       "AmplifyAppId": "d362bqalhlr1b6"
+    },
+    "categories": {
+      "function": {
+        "thalesApi": {
+          "secretsPathAmplifyAppId": "d362bqalhlr1b6",
+          "deploymentBucketName": "amplify-thalesairlabbackend-dev-22521-deployment",
+          "s3Key": "amplify-builds/thalesApi-523450622f6d77747a43-build.zip"
+        }
+      }
     }
   }
 }
