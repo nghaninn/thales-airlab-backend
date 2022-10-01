@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "thalesairlabbackend",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/nghaninn/Documents/Git/interview/thales-airlab/backend/amplify/backend/api/thalesairlabbackend/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AWS_IAM"
+    }
+  }
+}
