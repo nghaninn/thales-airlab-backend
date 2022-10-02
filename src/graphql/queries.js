@@ -1,6 +1,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const loadData = /* GraphQL */ `
+  query LoadData {
+    loadData
+  }
+`;
 export const getAirport = /* GraphQL */ `
   query GetAirport($uid: String!) {
     getAirport(uid: $uid) {

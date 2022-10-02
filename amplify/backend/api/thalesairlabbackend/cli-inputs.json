@@ -6,6 +6,13 @@
     "gqlSchemaPath": "/Users/nghaninn/Documents/Git/interview/thales-airlab/backend/amplify/backend/api/thalesairlabbackend/schema.graphql",
     "defaultAuthType": {
       "mode": "AWS_IAM"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "auththales"
+      }
+    ]
   }
 }

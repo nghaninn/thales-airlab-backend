@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  env:
+    Type: String
+Resources:
+  EmptyResource:
+    Type: Custom::EmptyResource
+    Condition: AlwaysFalse
+Conditions:
+  AlwaysFalse:
+    Fn::Equals:
+      - true
+      - false
+Outputs:
+  Region:
+    Description: Secrets Region
+    Value: us-east-1
+Description: >-
+  {"createdOn":"Mac","createdBy":"Amplify","createdWith":"9.1.0","stackType":"custom-customCloudformation","metadata":{}}

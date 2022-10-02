@@ -3,13 +3,28 @@
     "thalesairlabbackend": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "thales",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
             "authenticationType": "AWS_IAM"
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "auththales"
+              }
+            }
+          ]
         }
       }
     }
@@ -18,7 +33,73 @@
     "thalesApi": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "thalesairlabbackendlayer",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "thalesairlabbackend",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        },
+        {
+          "category": "custom",
+          "resourceName": "SES",
+          "attributes": [
+            "Region"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "thales",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    },
+    "thalesairlabbackendlayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    }
+  },
+  "auth": {
+    "thales": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
+    }
+  },
+  "custom": {
+    "SES": {
+      "service": "customCloudformation",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

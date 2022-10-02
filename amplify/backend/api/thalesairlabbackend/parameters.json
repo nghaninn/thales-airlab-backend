@@ -2,5 +2,12 @@
   "AppSyncApiName": "thalesairlabbackend",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "APIKeyExpirationEpoch": -1
+  "APIKeyExpirationEpoch": -1,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "auththales",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2022-10-02T13:06:58.919Z"
 }

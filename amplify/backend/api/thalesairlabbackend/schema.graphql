@@ -2,7 +2,13 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 # input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Airport @model {
+type Airport @model 
+  @aws_iam
+  @auth(rules: [
+    { allow: public, provider: iam, operations: [create, read, update] },
+    { allow: private, operations: [create, read, update] }
+  ]) 
+{
   uid: String! @primaryKey
   name: String
   icao: String
@@ -13,7 +19,13 @@ type Airport @model {
   STARs: [STAR] @hasMany
 }
 
-type Waypoint @model {
+type Waypoint @model 
+  @aws_iam
+  @auth(rules: [
+    { allow: public, provider: iam, operations: [create, read, update] },
+    { allow: private, operations: [create, read, update] }
+  ]) 
+{
   uid: String! @primaryKey
   name: String
   lat: Float
@@ -22,16 +34,32 @@ type Waypoint @model {
   STARs: [STAR] @manyToMany(relationName: "STARWaypoint")
 }
 
-type SID @model {
+type SID @model 
+  @aws_iam
+  @auth(rules: [
+    { allow: public, provider: iam, operations: [create, read, update] },
+    { allow: private, operations: [create, read, update] }
+  ]) 
+{
   name: String! @primaryKey
   airportUID: String
   airport: Airport @belongsTo(fields: ["airportUID"])
   waypoints: [Waypoint] @manyToMany(relationName: "SIDWaypoint")
 }
 
-type STAR @model {
+type STAR @model 
+  @aws_iam
+  @auth(rules: [
+    { allow: public, provider: iam, operations: [create, read, update] },
+    { allow: private, operations: [create, read, update] }
+  ]) 
+{
   name: String! @primaryKey
   airportUID: String
   airport: Airport @belongsTo(fields: ["airportUID"])
   waypoints: [Waypoint] @manyToMany(relationName: "STARWaypoint")
+}
+
+type Query {
+  loadData: AWSJSON @aws_cognito_user_pools @aws_iam @function(name: "thalesApi-${env}")
 }

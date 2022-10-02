@@ -1,6 +1,254 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const deleteAirport = /* GraphQL */ `
+  mutation DeleteAirport(
+    $input: DeleteAirportInput!
+    $condition: ModelAirportConditionInput
+  ) {
+    deleteAirport(input: $input, condition: $condition) {
+      uid
+      name
+      icao
+      lat
+      lng
+      alt
+      SIDs {
+        items {
+          name
+          airportUID
+          createdAt
+          updatedAt
+          airportSIDsId
+        }
+        nextToken
+      }
+      STARs {
+        items {
+          name
+          airportUID
+          createdAt
+          updatedAt
+          airportSTARsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteWaypoint = /* GraphQL */ `
+  mutation DeleteWaypoint(
+    $input: DeleteWaypointInput!
+    $condition: ModelWaypointConditionInput
+  ) {
+    deleteWaypoint(input: $input, condition: $condition) {
+      uid
+      name
+      lat
+      lng
+      SIDs {
+        items {
+          id
+          waypointID
+          sIDID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      STARs {
+        items {
+          id
+          waypointID
+          sTARID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteSID = /* GraphQL */ `
+  mutation DeleteSID(
+    $input: DeleteSIDInput!
+    $condition: ModelSIDConditionInput
+  ) {
+    deleteSID(input: $input, condition: $condition) {
+      name
+      airportUID
+      airport {
+        uid
+        name
+        icao
+        lat
+        lng
+        alt
+        SIDs {
+          nextToken
+        }
+        STARs {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      waypoints {
+        items {
+          id
+          waypointID
+          sIDID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      airportSIDsId
+    }
+  }
+`;
+export const deleteSTAR = /* GraphQL */ `
+  mutation DeleteSTAR(
+    $input: DeleteSTARInput!
+    $condition: ModelSTARConditionInput
+  ) {
+    deleteSTAR(input: $input, condition: $condition) {
+      name
+      airportUID
+      airport {
+        uid
+        name
+        icao
+        lat
+        lng
+        alt
+        SIDs {
+          nextToken
+        }
+        STARs {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      waypoints {
+        items {
+          id
+          waypointID
+          sTARID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      airportSTARsId
+    }
+  }
+`;
+export const deleteSIDWaypoint = /* GraphQL */ `
+  mutation DeleteSIDWaypoint(
+    $input: DeleteSIDWaypointInput!
+    $condition: ModelSIDWaypointConditionInput
+  ) {
+    deleteSIDWaypoint(input: $input, condition: $condition) {
+      id
+      waypointID
+      sIDID
+      waypoint {
+        uid
+        name
+        lat
+        lng
+        SIDs {
+          nextToken
+        }
+        STARs {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      sID {
+        name
+        airportUID
+        airport {
+          uid
+          name
+          icao
+          lat
+          lng
+          alt
+          createdAt
+          updatedAt
+        }
+        waypoints {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        airportSIDsId
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteSTARWaypoint = /* GraphQL */ `
+  mutation DeleteSTARWaypoint(
+    $input: DeleteSTARWaypointInput!
+    $condition: ModelSTARWaypointConditionInput
+  ) {
+    deleteSTARWaypoint(input: $input, condition: $condition) {
+      id
+      waypointID
+      sTARID
+      waypoint {
+        uid
+        name
+        lat
+        lng
+        SIDs {
+          nextToken
+        }
+        STARs {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      sTAR {
+        name
+        airportUID
+        airport {
+          uid
+          name
+          icao
+          lat
+          lng
+          alt
+          createdAt
+          updatedAt
+        }
+        waypoints {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        airportSTARsId
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createAirport = /* GraphQL */ `
   mutation CreateAirport(
     $input: CreateAirportInput!
@@ -75,43 +323,6 @@ export const updateAirport = /* GraphQL */ `
     }
   }
 `;
-export const deleteAirport = /* GraphQL */ `
-  mutation DeleteAirport(
-    $input: DeleteAirportInput!
-    $condition: ModelAirportConditionInput
-  ) {
-    deleteAirport(input: $input, condition: $condition) {
-      uid
-      name
-      icao
-      lat
-      lng
-      alt
-      SIDs {
-        items {
-          name
-          airportUID
-          createdAt
-          updatedAt
-          airportSIDsId
-        }
-        nextToken
-      }
-      STARs {
-        items {
-          name
-          airportUID
-          createdAt
-          updatedAt
-          airportSTARsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createWaypoint = /* GraphQL */ `
   mutation CreateWaypoint(
     $input: CreateWaypointInput!
@@ -153,41 +364,6 @@ export const updateWaypoint = /* GraphQL */ `
     $condition: ModelWaypointConditionInput
   ) {
     updateWaypoint(input: $input, condition: $condition) {
-      uid
-      name
-      lat
-      lng
-      SIDs {
-        items {
-          id
-          waypointID
-          sIDID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      STARs {
-        items {
-          id
-          waypointID
-          sTARID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteWaypoint = /* GraphQL */ `
-  mutation DeleteWaypoint(
-    $input: DeleteWaypointInput!
-    $condition: ModelWaypointConditionInput
-  ) {
-    deleteWaypoint(input: $input, condition: $condition) {
       uid
       name
       lat
@@ -297,46 +473,6 @@ export const updateSID = /* GraphQL */ `
     }
   }
 `;
-export const deleteSID = /* GraphQL */ `
-  mutation DeleteSID(
-    $input: DeleteSIDInput!
-    $condition: ModelSIDConditionInput
-  ) {
-    deleteSID(input: $input, condition: $condition) {
-      name
-      airportUID
-      airport {
-        uid
-        name
-        icao
-        lat
-        lng
-        alt
-        SIDs {
-          nextToken
-        }
-        STARs {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      waypoints {
-        items {
-          id
-          waypointID
-          sIDID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      airportSIDsId
-    }
-  }
-`;
 export const createSTAR = /* GraphQL */ `
   mutation CreateSTAR(
     $input: CreateSTARInput!
@@ -383,46 +519,6 @@ export const updateSTAR = /* GraphQL */ `
     $condition: ModelSTARConditionInput
   ) {
     updateSTAR(input: $input, condition: $condition) {
-      name
-      airportUID
-      airport {
-        uid
-        name
-        icao
-        lat
-        lng
-        alt
-        SIDs {
-          nextToken
-        }
-        STARs {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      waypoints {
-        items {
-          id
-          waypointID
-          sTARID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      airportSTARsId
-    }
-  }
-`;
-export const deleteSTAR = /* GraphQL */ `
-  mutation DeleteSTAR(
-    $input: DeleteSTARInput!
-    $condition: ModelSTARConditionInput
-  ) {
-    deleteSTAR(input: $input, condition: $condition) {
       name
       airportUID
       airport {
@@ -553,54 +649,6 @@ export const updateSIDWaypoint = /* GraphQL */ `
     }
   }
 `;
-export const deleteSIDWaypoint = /* GraphQL */ `
-  mutation DeleteSIDWaypoint(
-    $input: DeleteSIDWaypointInput!
-    $condition: ModelSIDWaypointConditionInput
-  ) {
-    deleteSIDWaypoint(input: $input, condition: $condition) {
-      id
-      waypointID
-      sIDID
-      waypoint {
-        uid
-        name
-        lat
-        lng
-        SIDs {
-          nextToken
-        }
-        STARs {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      sID {
-        name
-        airportUID
-        airport {
-          uid
-          name
-          icao
-          lat
-          lng
-          alt
-          createdAt
-          updatedAt
-        }
-        waypoints {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        airportSIDsId
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createSTARWaypoint = /* GraphQL */ `
   mutation CreateSTARWaypoint(
     $input: CreateSTARWaypointInput!
@@ -655,54 +703,6 @@ export const updateSTARWaypoint = /* GraphQL */ `
     $condition: ModelSTARWaypointConditionInput
   ) {
     updateSTARWaypoint(input: $input, condition: $condition) {
-      id
-      waypointID
-      sTARID
-      waypoint {
-        uid
-        name
-        lat
-        lng
-        SIDs {
-          nextToken
-        }
-        STARs {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      sTAR {
-        name
-        airportUID
-        airport {
-          uid
-          name
-          icao
-          lat
-          lng
-          alt
-          createdAt
-          updatedAt
-        }
-        waypoints {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        airportSTARsId
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteSTARWaypoint = /* GraphQL */ `
-  mutation DeleteSTARWaypoint(
-    $input: DeleteSTARWaypointInput!
-    $condition: ModelSTARWaypointConditionInput
-  ) {
-    deleteSTARWaypoint(input: $input, condition: $condition) {
       id
       waypointID
       sTARID

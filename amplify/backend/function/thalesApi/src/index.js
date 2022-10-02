@@ -13,19 +13,30 @@ const { Parameters } = await (new aws.SSM())
 Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
 */
 
+const loadData = require('./handler/loadData');
+
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
 exports.handler = async (event) => {
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    return {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
-    };
-};
+    console.log(event);
+  
+    try {
+      const { fieldName } = event;
+  
+      switch (fieldName) {
+        case "loadData":
+            return loadData(event);
+        default:
+          throw Error(`Unhandled fieldname '${fieldName}'.`);
+      }
+    } catch (err) {
+      console.log(err);
+      return {
+        success: false,
+        message: err.message,
+      };
+    }
+  };
+  
