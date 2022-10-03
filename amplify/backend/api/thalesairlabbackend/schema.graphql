@@ -62,4 +62,6 @@ type STAR @model
 
 type Query {
   loadData: AWSJSON @aws_cognito_user_pools @aws_iam @function(name: "thalesApi-${env}")
+  getTopAirportSID(top: Int, airportIcaos: [String]): AWSJSON @aws_cognito_user_pools @aws_iam @function(name: "thalesApi-${env}")
+  getTopAirportSTAR(top: Int, airportIcaos: [String]): AWSJSON @aws_cognito_user_pools @aws_iam @function(name: "thalesApi-${env}")
 }

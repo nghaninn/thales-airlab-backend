@@ -122,6 +122,116 @@
             },
             "CUSTOM_SES_REGION": {
               "Ref": "customSESRegion"
+            },
+            "rds_name": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "thalesApi"
+                      }
+                    ]
+                  },
+                  "rds_name"
+                ]
+              ]
+            },
+            "rds_username": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "thalesApi"
+                      }
+                    ]
+                  },
+                  "rds_username"
+                ]
+              ]
+            },
+            "rds_password": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "thalesApi"
+                      }
+                    ]
+                  },
+                  "rds_password"
+                ]
+              ]
+            },
+            "rds_port": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "thalesApi"
+                      }
+                    ]
+                  },
+                  "rds_port"
+                ]
+              ]
+            },
+            "rds_database": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "thalesApi"
+                      }
+                    ]
+                  },
+                  "rds_database"
+                ]
+              ]
             }
           }
         },
@@ -410,7 +520,11 @@
                 "dynamodb:UpdateItem",
                 "dynamodb:DeleteItem",
                 "dynamodb:BatchWriteItem",
-                "dynamodb:BatchGetItem"
+                "dynamodb:BatchGetItem",
+                "dynamodb:PartiQLInsert",
+                "dynamodb:PartiQLUpdate",
+                "dynamodb:PartiQLDelete",
+                "dynamodb:PartiQLSelect"
               ],
               "Resource": [
                 {

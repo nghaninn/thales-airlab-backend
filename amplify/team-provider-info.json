@@ -16,11 +16,11 @@
         "thalesApi": {
           "secretsPathAmplifyAppId": "d362bqalhlr1b6",
           "deploymentBucketName": "amplify-thalesairlabbackend-dev-22521-deployment",
-          "s3Key": "amplify-builds/thalesApi-4a4f777a566658495737-build.zip"
+          "s3Key": "amplify-builds/thalesApi-49433941365862364a33-build.zip"
         },
         "thalesairlabbackendlayer": {
           "deploymentBucketName": "amplify-thalesairlabbackend-dev-22521-deployment",
-          "s3Key": "amplify-builds/thalesairlabbackendlayer-LambdaLayerVersiond295f13d-build.zip"
+          "s3Key": "amplify-builds/thalesairlabbackendlayer-LambdaLayerVersion60cbdedf-build.zip"
         }
       },
       "auth": {

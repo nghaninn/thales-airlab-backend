@@ -6,6 +6,16 @@ export const loadData = /* GraphQL */ `
     loadData
   }
 `;
+export const getTopAirportSID = /* GraphQL */ `
+  query GetTopAirportSID($top: Int, $airportIcaos: [String]) {
+    getTopAirportSID(top: $top, airportIcaos: $airportIcaos)
+  }
+`;
+export const getTopAirportSTAR = /* GraphQL */ `
+  query GetTopAirportSTAR($top: Int, $airportIcaos: [String]) {
+    getTopAirportSTAR(top: $top, airportIcaos: $airportIcaos)
+  }
+`;
 export const getAirport = /* GraphQL */ `
   query GetAirport($uid: String!) {
     getAirport(uid: $uid) {
