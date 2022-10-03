@@ -16,7 +16,7 @@
         "thalesApi": {
           "secretsPathAmplifyAppId": "d362bqalhlr1b6",
           "deploymentBucketName": "amplify-thalesairlabbackend-dev-22521-deployment",
-          "s3Key": "amplify-builds/thalesApi-49433941365862364a33-build.zip"
+          "s3Key": "amplify-builds/thalesApi-35354f4a456677544159-build.zip"
         },
         "thalesairlabbackendlayer": {
           "deploymentBucketName": "amplify-thalesairlabbackend-dev-22521-deployment",

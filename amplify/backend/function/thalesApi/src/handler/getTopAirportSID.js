@@ -11,12 +11,16 @@ const getTopAirportSID = async (event) => {
     } = event.arguments;
 
 
-    let query = `SELECT airportUID, sidW.waypointUID, COUNT(sidW.waypointUID) as counted FROM SIDWaypoint sidW 
+    let query = `SELECT airportUID, waypointUID, counted, a.lat as airportLat, a.lng AS airportLng, w.lat AS waypointLat, w.lng AS waypointLng FROM
+    (SELECT airportUID, sidW.waypointUID, COUNT(sidW.waypointUID) as counted FROM SIDWaypoint sidW 
                 INNER JOIN SID ON SIDName = SID.NAME 
                 INNER JOIN Airport ON SID.AirportUID = Airport.UID 
                 ${airportIcaos && airportIcaos.length > 0 ? `WHERE Airport.UID IN ('${airportIcaos.join("', '")}')` : ''} 
                 GROUP BY Airport.UID, sidW.waypointUID 
-                ORDER BY COUNT(sidW.waypointUID) DESC ${top && top > 0 ? `LIMIT ${top}` : ''} `;
+                ORDER BY COUNT(sidW.waypointUID) DESC ${top && top > 0 ? `LIMIT ${top}` : ''} 
+                ) as t
+                INNER JOIN Airport a ON a.uid = airportUID
+                INNER JOIN Waypoint w ON w.uid = waypointUID`;
 
     let result = await SQLManager.query(query);
     result = Object.values(JSON.parse(JSON.stringify(result)))
