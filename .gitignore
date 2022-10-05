@@ -18,3 +18,8 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+*/custom/*
+amplify/backend/custom/*
+amplify/backend/function/thalesairlabbackendlayer
+amplify/backend/function/SNSTrigger

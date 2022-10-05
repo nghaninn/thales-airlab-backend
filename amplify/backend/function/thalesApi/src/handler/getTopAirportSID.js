@@ -1,8 +1,4 @@
-const ThalesManager = require("./ThalesManager")
-const DynamoDB = require('/opt/nodejs/libs/DynamoDB');
-const moment = require('/opt/nodejs/node_modules/moment-timezone');
-const uuid = require("/opt/nodejs/node_modules/uuid/v4");
-const SQLManager = require("./SQLManager");
+const SQLManager = require("/opt/nodejs/libs/SQLManager");
 
 const getTopAirportSID = async (event) => {
     const {

@@ -70,6 +70,11 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    },
+    "SNSTrigger": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "auth": {
@@ -98,6 +103,10 @@
   },
   "custom": {
     "SES": {
+      "service": "customCloudformation",
+      "providerPlugin": "awscloudformation"
+    },
+    "SNS": {
       "service": "customCloudformation",
       "providerPlugin": "awscloudformation"
     }

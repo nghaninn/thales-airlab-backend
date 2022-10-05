@@ -1,9 +1,7 @@
-// const UserManager = require("/opt/nodejs/libs/UserManager");
-const ThalesManager = require("./ThalesManager")
-const DynamoDB = require('/opt/nodejs/libs/DynamoDB');
+const ThalesManager = require("/opt/nodejs/libs/ThalesManager")
 const moment = require('/opt/nodejs/node_modules/moment-timezone');
 const uuid = require("/opt/nodejs/node_modules/uuid/v4");
-const SQLManager = require("./SQLManager");
+const SQLManager = require("/opt/nodejs/libs/SQLManager");
 
 const loadData = async (event) => {
 
